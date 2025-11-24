@@ -57,6 +57,18 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## Run SonarQube analysis locally
+
+1. Copy `.sonar.env.example` to `.sonar.env` and set the `SONAR_TOKEN` generated in the SonarQube UI (log in at [http://localhost:9000](http://localhost:9000) with the default `admin`/`admin` credentials the first time, change the password, and create a token).
+2. Start SonarQube with Docker: `docker compose up -d`. The compose file creates the `sonar-net` network automatically.
+3. (Optional) Run `npm run test:cov` if you want coverage numbers to appear in SonarQube.
+4. Once the server finishes booting (~1‑2 minutes), run the scanner:
+   - macOS/Linux: `npm run sonar:unix`
+   - Windows: `npm run sonar:win`
+5. Open [http://localhost:9000/dashboard?id=final-sw](http://localhost:9000/dashboard?id=final-sw) to confirm the analysis arrived successfully.
+
+The scanner container mounts the repository, picks up the token from `.sonar.env`, and publishes the report to the running SonarQube instance.
+
 ## Deployment
 
 When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.

@@ -18,8 +18,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "sonar:win": "docker run --rm --network=sonar-net -v \"%cd%:/usr/src\" sonarsource/sonar-scanner-cli sonar-scanner -Dsonar.projectBaseDir=/usr/src",
-    "sonar:unix": "docker run --rm -v \"$PWD:/usr/src\" --network=sonar-net sonarsource/sonar-scanner-cli sonar-scanner -Dsonar.projectBaseDir=/usr/src"
+    "sonar:win": "docker run --rm --env-file .sonar.env --network=sonar-net -v \"%cd%:/usr/src\" sonarsource/sonar-scanner-cli sonar-scanner -Dsonar.projectBaseDir=/usr/src",
+    "sonar:unix": "docker run --rm --env-file .sonar.env -v \"$PWD:/usr/src\" --network=sonar-net sonarsource/sonar-scanner-cli sonar-scanner -Dsonar.projectBaseDir=/usr/src"
   },
   "dependencies": {
     "@nestjs/common": "^11.1.9",

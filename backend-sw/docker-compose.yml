@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   sonarqube:
     image: sonarqube:9.9-community
@@ -13,6 +11,4 @@ services:
 
 networks:
   sonar-net:
-    external: true
-
-# docker network create sonar-net
+    name: sonar-net
