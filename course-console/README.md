@@ -14,3 +14,8 @@ Compilar:
 ```bash
 make
 ./course_console
+
+
+make tests
+
+para correr los tests
