@@ -1,10 +1,10 @@
-import { Injectable } from "@nestjs/common";
-import { UserEntity } from "../../types/user.type";
-import { v4 as uuidv4 } from "uuid";
+import { Injectable } from '@nestjs/common';
+import { UserEntity } from '../../types/user.type';
+import { v4 as uuidv4 } from 'uuid';
 
 const INITIAL_USERS: UserEntity[] = [
-  { id: uuidv4(), username: "admin", password: "adminpass", roles: ["Admin"] },
-  { id: uuidv4(), username: "user", password: "userpass", roles: ["User"] }
+  { id: uuidv4(), username: 'admin', password: 'adminpass', roles: ['Admin'] },
+  { id: uuidv4(), username: 'user', password: 'userpass', roles: ['User'] },
 ];
 
 @Injectable()
