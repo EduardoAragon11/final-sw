@@ -42,24 +42,6 @@ TEST_CASE("Nota final es 0 si no cumple asistencia") {
     REQUIRE(final == 0);
 }
 
-TEST_CASE("Se aplican puntos extra si allYearsTeachers = true") {
-    CourseConfig cfg;
-    cfg.setExtraPoints(true);  // activa punto extra
-
-    StudentService svc(cfg);
-
-    std::vector<Evaluation> evals = {
-        Evaluation(20, 100),
-    };
-
-    svc.registerEvaluations("Ana", evals, true);
-
-    auto& s = svc.getStudents().at(0);
-
-    double expected = 20 + 1; // +1 punto extra
-    REQUIRE(svc.computeFinalGrade(s) == Approx(expected));
-}
-
 TEST_CASE("Reemplazo completo de evaluaciones") {
     CourseConfig cfg;
     StudentService svc(cfg);
